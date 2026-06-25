@@ -39,3 +39,4 @@ mirhal-sync-*.json
 *.sln
 *.sw?
 .vercel
+server/package-lock.json
