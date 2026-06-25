@@ -24,6 +24,9 @@ dist-ssr
 serviceAccountKey.json
 google-services.json
 GoogleService-Info.plist
+production_env.txt
+*sync*.json
+mirhal-sync-*.json
 
 # Editor directories and files
 .vscode/*
@@ -35,3 +38,4 @@ GoogleService-Info.plist
 *.njsproj
 *.sln
 *.sw?
+.vercel

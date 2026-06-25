@@ -40,10 +40,12 @@ app.use(cors({
       'capacitor://mirhal.app',
       process.env.FRONTEND_URL,
       process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
+      'https://mirhal-app.vercel.app',
+      'https://mirhal-api-production.up.railway.app',
     ].filter(Boolean);
 
-    // Also allow any *.vercel.app domain for preview deployments
-    if (origin && (origin.endsWith('.vercel.app') || origin.endsWith('.onrender.com'))) {
+    // Also allow any *.vercel.app, *.railway.app, or *.onrender.com domain for cloud deployments
+    if (origin && (origin.endsWith('.vercel.app') || origin.endsWith('.onrender.com') || origin.endsWith('.railway.app'))) {
       return callback(null, true);
     }
 
