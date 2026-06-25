@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <!-- Background Circle -->
+  <circle cx="400" cy="320" r="280" fill="#8b6f47"/>
+
+  <!-- Crescent Moon and Star -->
+  <g>
+    <path d="M520 200c0-22.091 17.909-40 40-40 5.523 0 10.79 1.119 15.562 3.142C567.831 151.694 558.418 145 547.5 145c-22.091 0-40 17.909-40 40s17.909 40 40 40c10.918 0 20.331-6.694 27.062-18.142C569.79 208.881 564.523 210 559 210c-22.091 0-39-17.909-39-40z" fill="white"/>
+    <path d="M565 195l3.09 9.511h10l-8.09 5.877 3.09 9.511-8.09-5.877-8.09 5.877 3.09-9.511-8.09-5.877h10z" fill="white"/>
+  </g>
+
+  <!-- Palm Tree -->
+  <g>
+    <!-- Trunk -->
+    <rect x="185" y="380" width="30" height="120" rx="15" fill="white"/>
+    <!-- Leaves -->
+    <path d="M200 380c-30-30-60-40-80-42 20 5 45 15 80 42z" fill="white"/>
+    <path d="M200 390c-35-20-65-25-85-23 22 0 50 8 85 23z" fill="white"/>
+    <path d="M200 400c-30 5-60 0-80-5 20 10 45 15 80 5z" fill="white"/>
+    <path d="M200 380c30-30 60-40 80-42-20 5-45 15-80 42z" fill="white"/>
+    <path d="M200 390c35-20 65-25 85-23-22 0-50 8-85 23z" fill="white"/>
+    <path d="M200 400c30 5 60 0 80-5-20 10-45 15-80 5z" fill="white"/>
+  </g>
+
+  <!-- RV/Camper -->
+  <g>
+    <!-- Main body -->
+    <rect x="360" y="380" width="180" height="90" rx="8" fill="white"/>
+    <!-- Cab -->
+    <path d="M540 380h60l20 90h-80v-90z" fill="white"/>
+    <!-- Windows -->
+    <rect x="375" y="395" width="35" height="30" rx="3" fill="#8b6f47"/>
+    <rect x="425" y="395" width="50" height="30" rx="3" fill="#8b6f47"/>
+    <rect x="490" y="395" width="35" height="30" rx="3" fill="#8b6f47"/>
+    <rect x="555" y="395" width="35" height="30" rx="3" fill="#8b6f47"/>
+    <!-- Door -->
+    <rect x="495" y="420" width="25" height="50" rx="3" fill="#8b6f47"/>
+    <circle cx="515" cy="445" r="2" fill="white"/>
+    <!-- Stripes -->
+    <line x1="370" y1="440" x2="530" y2="440" stroke="#8b6f47" stroke-width="3"/>
+    <line x1="370" y1="455" x2="530" y2="455" stroke="#8b6f47" stroke-width="2"/>
+    <!-- Wheels -->
+    <circle cx="410" cy="470" r="20" fill="#8b6f47" stroke="white" stroke-width="4"/>
+    <circle cx="410" cy="470" r="8" fill="white"/>
+    <circle cx="580" cy="470" r="20" fill="#8b6f47" stroke="white" stroke-width="4"/>
+    <circle cx="580" cy="470" r="8" fill="white"/>
+  </g>
+
+  <!-- Wavy ground line -->
+  <path d="M120 500c60-15 120-15 180 0 60 15 120 15 180 0 60-15 120-15 180 0 60 15 120 15 180 0" stroke="white" stroke-width="8" fill="none"/>
+
+  <!-- Text Banner -->
+  <rect x="200" y="580" width="400" height="120" rx="60" fill="#8b6f47"/>
+
+  <!-- DROOBEE Text -->
+  <text x="400" y="665" font-family="Arial, sans-serif" font-size="85" font-weight="900" fill="white" text-anchor="middle">DROOBEE</text>
+</svg>

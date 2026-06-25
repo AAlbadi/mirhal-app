@@ -1,0 +1,172 @@
+{
+  "timestamp": "2026-01-04T08:20:20.876Z",
+  "database": "droobee-marketplace",
+  "migrated": 33,
+  "updates": [
+    {
+      "name": "Al Jazayer Beach",
+      "spotId": "SPOT-0001",
+      "_id": "6958cbead8456fdc5dcc284d"
+    },
+    {
+      "name": "Salmi Desert Camp",
+      "spotId": "SPOT-0002",
+      "_id": "6958cbead8456fdc5dcc2853"
+    },
+    {
+      "name": "Mutla Ridge",
+      "spotId": "SPOT-0003",
+      "_id": "6958cbead8456fdc5dcc2856"
+    },
+    {
+      "name": "Al Khiran Beach",
+      "spotId": "SPOT-0004",
+      "_id": "6958cbead8456fdc5dcc2859"
+    },
+    {
+      "name": "Al Ghariya Beach",
+      "spotId": "SPOT-0005",
+      "_id": "6958cbead8456fdc5dcc285c"
+    },
+    {
+      "name": "Fuwairit Beach",
+      "spotId": "SPOT-0006",
+      "_id": "6958cbead8456fdc5dcc285f"
+    },
+    {
+      "name": "Zekreet Peninsula",
+      "spotId": "SPOT-0007",
+      "_id": "6958cbead8456fdc5dcc2862"
+    },
+    {
+      "name": "Sealine Beach/Mesaieed Dunes",
+      "spotId": "SPOT-0008",
+      "_id": "6958cbead8456fdc5dcc2865"
+    },
+    {
+      "name": "Jebel Qahwan",
+      "spotId": "SPOT-0009",
+      "_id": "6958cbead8456fdc5dcc2868"
+    },
+    {
+      "name": "Fins Beach",
+      "spotId": "SPOT-0010",
+      "_id": "6958cbead8456fdc5dcc286b"
+    },
+    {
+      "name": "Al Mughsail Beach",
+      "spotId": "SPOT-0011",
+      "_id": "6958cbead8456fdc5dcc286e"
+    },
+    {
+      "name": "Sharqiyah Sands (Near edge)",
+      "spotId": "SPOT-0012",
+      "_id": "6958cbead8456fdc5dcc2871"
+    },
+    {
+      "name": "Sawadi Beach",
+      "spotId": "SPOT-0013",
+      "_id": "6958cbead8456fdc5dcc2874"
+    },
+    {
+      "name": "Wadi Bani Khalid",
+      "spotId": "SPOT-0014",
+      "_id": "6958cbead8456fdc5dcc2877"
+    },
+    {
+      "name": "Farasan Banks Beach",
+      "spotId": "SPOT-0015",
+      "_id": "6958cbead8456fdc5dcc287a"
+    },
+    {
+      "name": "Harrat Khaybar",
+      "spotId": "SPOT-0016",
+      "_id": "6958cbead8456fdc5dcc287d"
+    },
+    {
+      "name": "Jeddah Corniche North",
+      "spotId": "SPOT-0017",
+      "_id": "6958cbead8456fdc5dcc2880"
+    },
+    {
+      "name": "Al Soudah Mountain Park",
+      "spotId": "SPOT-0018",
+      "_id": "6958cbead8456fdc5dcc2883"
+    },
+    {
+      "name": "Half Moon Bay Shore",
+      "spotId": "SPOT-0019",
+      "_id": "6958cbead8456fdc5dcc2886"
+    },
+    {
+      "name": "Thumamah Desert",
+      "spotId": "SPOT-0020",
+      "_id": "6958cbead8456fdc5dcc2889"
+    },
+    {
+      "name": "Al Hamra Beach",
+      "spotId": "SPOT-0021",
+      "_id": "6958cbead8456fdc5dcc288c"
+    },
+    {
+      "name": "Umm Al Quwain Beach",
+      "spotId": "SPOT-0022",
+      "_id": "6958cbead8456fdc5dcc288f"
+    },
+    {
+      "name": "Jebel Jais Lower Slopes",
+      "spotId": "SPOT-0023",
+      "_id": "6958cbead8456fdc5dcc2892"
+    },
+    {
+      "name": "Wadi Shawka",
+      "spotId": "SPOT-0024",
+      "_id": "6958cbead8456fdc5dcc2895"
+    },
+    {
+      "name": "Al Aqah Beach",
+      "spotId": "SPOT-0025",
+      "_id": "6958cbead8456fdc5dcc2898"
+    },
+    {
+      "name": "Al Qudra Desert Lakes",
+      "spotId": "SPOT-0026",
+      "_id": "6958cbead8456fdc5dcc289b"
+    },
+    {
+      "name": "Sealine Beach",
+      "spotId": "SPOT-0027",
+      "_id": "6958cbead8456fdc5dcc289e"
+    },
+    {
+      "name": "Umluj Coast",
+      "spotId": "SPOT-0028",
+      "_id": "6958cbead8456fdc5dcc28a1"
+    },
+    {
+      "name": "UAQ Mangrove Beach",
+      "spotId": "SPOT-0029",
+      "_id": "6958cbead8456fdc5dcc28a4"
+    },
+    {
+      "name": "Tree of Life Area",
+      "spotId": "SPOT-0030",
+      "_id": "6958d37c78e7034d76d94acc"
+    },
+    {
+      "name": "Durrat Al Bahrain Coast",
+      "spotId": "SPOT-0031",
+      "_id": "6958d37c78e7034d76d94acf"
+    },
+    {
+      "name": "Sakhir Desert",
+      "spotId": "SPOT-0032",
+      "_id": "6958d37c78e7034d76d94ad2"
+    },
+    {
+      "name": "Bubiyan Island Coast",
+      "spotId": "SPOT-0033",
+      "_id": "6958d37c78e7034d76d94ad7"
+    }
+  ]
+}

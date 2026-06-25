@@ -1,0 +1,19 @@
+<IfModule mod_headers.c>
+    # Unset any existing CSP headers that might be too strict
+    Header unset Content-Security-Policy
+    Header unset X-Content-Security-Policy
+    Header unset X-WebKit-CSP
+
+    # Set the PERMISSIVE CSP header allowing Supabase, Google, Stripe, Cloudflare
+    Header set Content-Security-Policy "default-src 'self' https://*.supabase.co https://*.supabase.in https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.stripe.com; connect-src 'self' https://*.supabase.co https://*.supabase.in https://*.google.com https://*.googleapis.com https://*.stripe.com https://api.stripe.com https://cloudflareinsights.com ws: wss:; img-src 'self' data: https: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.google.com https://*.gstatic.com https://*.stripe.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule . /index.html [L]
+</IfModule>

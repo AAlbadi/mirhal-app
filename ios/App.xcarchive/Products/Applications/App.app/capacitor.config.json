@@ -1,0 +1,25 @@
+{
+	"appId": "com.mirhal.app",
+	"appName": "Mirhal",
+	"webDir": "dist",
+	"server": {
+		"url": "https://mirhal.app",
+		"cleartext": false
+	},
+	"plugins": {
+		"CapacitorHttp": {
+			"enabled": false
+		},
+		"Keyboard": {
+			"resize": "body",
+			"style": "dark",
+			"resizeOnFullScreen": true
+		}
+	},
+	"packageClassList": [
+		"CAPBrowserPlugin",
+		"KeyboardPlugin",
+		"PushNotificationsPlugin",
+		"SocialLoginPlugin"
+	]
+}

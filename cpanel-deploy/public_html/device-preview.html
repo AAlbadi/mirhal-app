@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 Device Preview - Mirhal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        .category-header {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 25px 0 12px 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-header::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .device-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .device-btn {
+            background: white;
+            border: 3px solid transparent;
+            border-radius: 16px;
+            padding: 20px 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: visible;
+        }
+
+        .device-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .device-btn.active {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .device-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 0.65rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .device-icon {
+            font-size: 3rem;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .device-name {
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .device-specs {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .device-year {
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 3px;
+            font-weight: 400;
+        }
+
+        .preview-container {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            min-height: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .device-info {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            border-radius: 12px;
+        }
+
+        .device-info h3 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .device-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .device-frame {
+            background: #1a1a1a;
+            border-radius: 35px;
+            padding: 18px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .device-frame::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 8px;
+            background: #2a2a2a;
+            border-radius: 4px;
+        }
+
+        .device-screen {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Camera Notch & Island Styles */
+        .device-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Dynamic Island (iPhone 14 Pro and newer) */
+        .notch-dynamic-island {
+            width: 126px;
+            height: 37px;
+            background: #000;
+            border-radius: 20px;
+            top: 11px;
+            box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+        }
+
+        .notch-dynamic-island::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(100, 100, 255, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .notch-dynamic-island::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 25%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, rgba(255, 50, 50, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        /* Traditional Notch (iPhone X-13) */
+        .notch-traditional {
+            width: 209px;
+            height: 30px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            top: 0;
+        }
+
+        .notch-traditional::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 6px;
+            background: rgba(50, 50, 50, 0.8);
+            border-radius: 3px;
+        }
+
+        /* Punch-Hole Camera (Modern Android) */
+        .notch-punchhole {
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #000 0%, #1a1a1a 100%);
+            border-radius: 50%;
+            top: 18px;
+            box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .notch-punchhole::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(100, 150, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        /* No notch (iPhone SE, Tablets) */
+        .notch-none {
+            display: none;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .device-selector {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 12px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .preview-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📱 Modern Device Preview</h1>
+        <p class="subtitle">Test your application across all the latest devices • 2026 Edition</p>
+
+        <!-- iOS DEVICES -->
+        <div class="category-header">🍎 iOS Devices</div>
+        <div class="device-selector">
+            <div class="device-btn" onclick="switchDevice('iPhone 16 Pro Max', 430, 932, '2024', 'dynamic-island')">
+                <div class="device-badge">Latest</div>
+                <div class="device-icon">📱</div>
+                <div class="device-name">iPhone 16 Pro Max</div>
+                <div class="device-specs">430 × 932</div>
+                <div class="device-year">2024</div>
+            </div>
+
+            <div class="device-btn active" onclick="switchDevice('iPhone 16 Pro', 402, 874, '2024', 'dynamic-island')">
+                <div class="device-badge">Popular</div>
+                <div class="device-icon">📱</div>
+                <div class="device-name">iPhone 16 Pro</div>
+                <div class="device-specs">402 × 874</div>
+                <div class="device-year">2024</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('iPhone 15 Pro Max', 430, 932, '2023', 'dynamic-island')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">iPhone 15 Pro Max</div>
+                <div class="device-specs">430 × 932</div>
+                <div class="device-year">2023</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('iPhone 15', 393, 852, '2023', 'dynamic-island')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">iPhone 15</div>
+                <div class="device-specs">393 × 852</div>
+                <div class="device-year">2023</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('iPhone 14 Pro', 393, 852, '2022', 'dynamic-island')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">iPhone 14 Pro</div>
+                <div class="device-specs">393 × 852</div>
+                <div class="device-year">2022</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('iPhone SE (3rd gen)', 375, 667, '2022', 'none')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">iPhone SE (3rd gen)</div>
+                <div class="device-specs">375 × 667</div>
+                <div class="device-year">2022</div>
+            </div>
+        </div>
+
+        <!-- ANDROID DEVICES -->
+        <div class="category-header">🤖 Android Devices</div>
+        <div class="device-selector">
+            <div class="device-btn" onclick="switchDevice('Samsung Galaxy S24 Ultra', 412, 915, '2024', 'punchhole')">
+                <div class="device-badge">Flagship</div>
+                <div class="device-icon">📱</div>
+                <div class="device-name">Samsung S24 Ultra</div>
+                <div class="device-specs">412 × 915</div>
+                <div class="device-year">2024</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('Samsung Galaxy S24', 384, 854, '2024', 'punchhole')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">Samsung S24</div>
+                <div class="device-specs">384 × 854</div>
+                <div class="device-year">2024</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('Google Pixel 9 Pro', 412, 915, '2024', 'punchhole')">
+                <div class="device-badge">Popular</div>
+                <div class="device-icon">📱</div>
+                <div class="device-name">Google Pixel 9 Pro</div>
+                <div class="device-specs">412 × 915</div>
+                <div class="device-year">2024</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('Google Pixel 8', 412, 915, '2023', 'punchhole')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">Google Pixel 8</div>
+                <div class="device-specs">412 × 915</div>
+                <div class="device-year">2023</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('OnePlus 12', 450, 1000, '2024', 'punchhole')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">OnePlus 12</div>
+                <div class="device-specs">450 × 1000</div>
+                <div class="device-year">2024</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('Xiaomi 14 Pro', 440, 980, '2024', 'punchhole')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">Xiaomi 14 Pro</div>
+                <div class="device-specs">440 × 980</div>
+                <div class="device-year">2024</div>
+            </div>
+        </div>
+
+        <!-- TABLETS -->
+        <div class="category-header">📱 Tablets</div>
+        <div class="device-selector">
+            <div class="device-btn" onclick="switchDevice('iPad Pro 13&quot; (2024)', 1032, 1376, '2024', 'none')">
+                <div class="device-badge">Pro</div>
+                <div class="device-icon">📱</div>
+                <div class="device-name">iPad Pro 13" (M4)</div>
+                <div class="device-specs">1032 × 1376</div>
+                <div class="device-year">2024</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('iPad Air 11&quot;', 820, 1180, '2024', 'none')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">iPad Air 11"</div>
+                <div class="device-specs">820 × 1180</div>
+                <div class="device-year">2024</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('iPad (10th gen)', 820, 1180, '2022', 'none')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">iPad (10th gen)</div>
+                <div class="device-specs">820 × 1180</div>
+                <div class="device-year">2022</div>
+            </div>
+
+            <div class="device-btn" onclick="switchDevice('Samsung Galaxy Tab S9', 800, 1280, '2023', 'none')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">Galaxy Tab S9</div>
+                <div class="device-specs">800 × 1280</div>
+                <div class="device-year">2023</div>
+            </div>
+        </div>
+
+        <!-- PREVIEW AREA -->
+        <div class="preview-container">
+            <div class="device-info" id="deviceInfo">
+                <h3 id="currentDeviceName">iPhone 16 Pro</h3>
+                <p id="currentDeviceDetails">402 × 874 pixels • Released 2024</p>
+            </div>
+            <div class="device-frame" id="deviceFrame">
+                <div class="device-screen" id="deviceScreen">
+                    <div class="device-notch notch-dynamic-island" id="deviceNotch"></div>
+                    <iframe src="http://localhost:3000" id="previewFrame"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentDevice = 'iPhone 16 Pro';
+
+        function switchDevice(deviceName, width, height, year, notchType = 'dynamic-island') {
+            // Update active button
+            document.querySelectorAll('.device-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+
+            // Update device info display
+            document.getElementById('currentDeviceName').textContent = deviceName;
+            document.getElementById('currentDeviceDetails').textContent =
+                `${width} × ${height} pixels • Released ${year}`;
+
+            // Update notch/island type
+            const notchElement = document.getElementById('deviceNotch');
+            notchElement.className = 'device-notch notch-' + notchType;
+
+            // Update device frame size
+            const frame = document.getElementById('deviceFrame');
+            const screen = document.getElementById('deviceScreen');
+
+            // Calculate scale for larger devices
+            const maxHeight = 800;
+            const scale = height > maxHeight ? maxHeight / height : 1;
+
+            screen.style.width = width + 'px';
+            screen.style.height = height + 'px';
+
+            if (scale < 1) {
+                frame.style.transform = `scale(${scale})`;
+            } else {
+                frame.style.transform = 'scale(1)';
+            }
+
+            // Add smooth transition animation
+            frame.style.transition = 'transform 0.3s ease';
+            frame.style.opacity = '0.8';
+            setTimeout(() => {
+                frame.style.opacity = '1';
+            }, 150);
+
+            currentDevice = deviceName;
+        }
+
+        // Initialize with iPhone 16 Pro
+        window.onload = () => {
+            const defaultBtn = document.querySelector('.device-btn.active');
+            if (defaultBtn) {
+                defaultBtn.click();
+            }
+        };
+
+        // Reload iframe on demand
+        function reloadPreview() {
+            document.getElementById('previewFrame').src = document.getElementById('previewFrame').src;
+        }
+
+        // Add keyboard shortcut for reload (Cmd/Ctrl + R)
+        document.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'r') {
+                e.preventDefault();
+                reloadPreview();
+            }
+        });
+    </script>
+</body>
+
+</html>

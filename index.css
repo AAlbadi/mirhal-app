@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Arabic-Custom';
+    src: url('/fonts/Arabic-Custom.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Arabic-Custom';
+    src: url('/fonts/Arabic-Custom.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    --brand-orange: #ff7119;
+}
+
+body {
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.serif-heading {
+    font-family: 'Playfair Display', serif;
+}
+
+.btn-tactile {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-tactile:active {
+    transform: scale(0.96);
+}
+
+.luxury-shadow {
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.glass-island {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D6D3D1;
+    border-radius: 10px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Scrollbar-none utility for Tailwind */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@layer base {
+    body {
+        @apply bg-stone-50/50 text-stone-900 font-sans antialiased;
+        /* 2026 Premium Gradient Background - Subtle & Alive */
+        background-image:
+            radial-gradient(at 0% 0%, rgba(255, 113, 25, 0.03) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(255, 113, 25, 0.02) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(255, 255, 255, 0) 0px, transparent 50%),
+            radial-gradient(at 0% 100%, rgba(255, 113, 25, 0.02) 0px, transparent 50%);
+        background-attachment: fixed;
+    }
+
+    /* Standard CSS for selection to avoid @apply complex variant errors */
+    ::selection {
+        background-color: rgba(244, 117, 33, 0.2);
+        /* brand-orange with opacity */
+        color: #0c0a09;
+        /* brand-dark */
+    }
+
+    body.dark {
+        @apply bg-stone-950 text-stone-50;
+        background-image:
+            radial-gradient(at 0% 0%, rgba(255, 113, 25, 0.05) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(0, 0, 0, 0) 0px, transparent 50%);
+    }
+
+    /* Refined Typography - Airbnb/Modern 2026 Style - ZOOMED OUT / DENSIFIED */
+    h1 {
+        @apply font-serif font-black text-stone-900 text-2xl md:text-4xl lg:text-5xl leading-[1.1] tracking-tight;
+    }
+
+    h2 {
+        @apply font-serif font-bold text-stone-900 text-xl md:text-3xl leading-tight tracking-tight;
+    }
+
+    h3 {
+        @apply font-serif font-bold text-stone-900 text-lg md:text-2xl tracking-tight;
+    }
+
+    h4,
+    h5,
+    h6 {
+        @apply font-serif font-bold text-stone-900 text-base md:text-lg tracking-tight;
+    }
+
+    .dark h1,
+    .dark h2,
+    .dark h3,
+    .dark h4,
+    .dark h5,
+    .dark h6 {
+        @apply text-white;
+    }
+
+    /* Emoji Utilities */
+    .emoji-hd {
+        font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        display: inline-block;
+        transform: translateY(-1px);
+    }
+}
+
+:root {
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Premium Utilities */
+.text-gold {
+    background: linear-gradient(135deg, #c5a065 0%, #8c6b4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.border-gold-glow {
+    border: 1px solid rgba(197, 160, 101, 0.3);
+    box-shadow: 0 0 15px rgba(197, 160, 101, 0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f3e9e1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d5b9b2;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a37b73;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+.glass-dark {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.animate-shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+    background-size: 1000px 100%;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (hover: hover) {
+    .glass-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+        background: rgba(255, 255, 255, 0.85);
+    }
+}
+
+.hover-scale {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (hover: hover) {
+    .hover-scale:hover {
+        transform: scale(1.02);
+    }
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    color: #4a3626;
+}
+
+/* Leaflet Map Customization */
+.leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.leaflet-popup-tip {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Safe Area Utilities */
+.pt-safe {
+    padding-top: env(safe-area-inset-top);
+}
+
+.pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pl-safe {
+    padding-left: env(safe-area-inset-left);
+}
+
+.pr-safe {
+    padding-right: env(safe-area-inset-right);
+}
+
+.min-h-safe {
+    min-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+}
+
+/* Mobile Performance Optimizations */
+/* Improve mobile touch responsiveness */
+html {
+    -webkit-tap-highlight-color: transparent;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    /* Ensure background covers the padded area */
+    background-color: white;
+    /* Or your brand background color */
+}
+
+/* Safe Area Utilities */
+.safe-pt {
+    padding-top: env(safe-area-inset-top);
+}
+
+.safe-pb {
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Disable 300ms delay and double-tap zoom on interactive elements */
+a,
+button,
+input,
+select,
+textarea,
+[role="button"] {
+    touch-action: manipulation;
+}
+
+/* Ensure clicks happen instantly */
+button,
+[role="button"],
+a {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .will-change-transform {
+        will-change: transform;
+    }
+
+    /* Smooth scrolling with GPU acceleration */
+    .overflow-y-auto {
+        -webkit-overflow-scrolling: touch;
+        transform: translateZ(0);
+    }
+
+    /* Touch action utilities for mobile list isolation */
+    .touch-pan-y {
+        touch-action: pan-y;
+    }
+
+    .overscroll-contain {
+        overscroll-behavior-y: contain;
+    }
+
+    /* Fully isolate mobile list from map on mobile */
+    @media (max-width: 1023px) {
+
+        /* Make mobile list capture all touch events */
+        .fixed.bottom-0.z-10 {
+            pointer-events: auto;
+            touch-action: pan-y;
+        }
+
+        /* Disable map interaction while list is present */
+        .fixed.inset-0.z-0 {
+            pointer-events: auto;
+        }
+    }
+
+    /* Hide mobile bottom nav when list is minimized (Airbnb style) */
+    body.mobile-list-minimized .mobile-bottom-nav {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(100px);
+        transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    }
+}
